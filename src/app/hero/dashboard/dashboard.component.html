@@ -1,0 +1,12 @@
+<h3>hero dashboard</h3>
+姓名: <input type="text" [formControl]="nameControl" (input)="(formChange)" />
+<button (click)="insert()">新增</button>
+<div *ngIf="heroList && heroList.length > 0; else elseBlock">
+  <ul>
+    <li *ngFor="let hero of heroList">
+      <a routerLink="/hero/{{ hero.id }}"> {{ hero.name | uppercase }} </a>
+      <span (click)="remove$.next(hero)">删除</span>
+    </li>
+  </ul>
+</div>
+<ng-template #elseBlock>正在加载</ng-template>

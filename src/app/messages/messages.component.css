@@ -1,0 +1,11 @@
+.messageBoxService {
+  width: 500px;
+  height: 500px;
+  position: fixed;
+  left: 400px;
+  top: 0;
+  overflow: scroll;
+  background: #eee;
+  padding: 20px;
+}
+

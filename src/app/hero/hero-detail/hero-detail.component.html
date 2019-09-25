@@ -1,0 +1,16 @@
+<h3>hero detail</h3>
+<div *ngIf="hero; else elseBlock">
+  <h3>{{ hero.name | uppercase }} detail</h3>
+  <div><span>id: </span>{{ hero.id }}</div>
+  <div>
+    <label
+      >姓名:
+      <input [(ngModel)]="hero.name" placeholder="姓名" />
+    </label>
+  </div>
+  <button (click)="goBack()">go back</button>
+  <button (click)="save()">save</button>
+</div>
+<ng-template #elseBlock>
+  数据正在加载
+</ng-template>
