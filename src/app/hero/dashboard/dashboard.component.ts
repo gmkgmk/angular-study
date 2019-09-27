@@ -21,6 +21,8 @@ export class DashboardComponent implements OnInit {
   }
   ngOnInit() {
     this.getHeros();
+
+    // debounce
     this.remove$
       .pipe(debounceTime(300))
       .subscribe((hero: Hero) => this.remove(hero));

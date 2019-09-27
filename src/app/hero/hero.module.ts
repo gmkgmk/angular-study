@@ -9,8 +9,11 @@ import { InMemoryDataService } from './in-memory-data.service';
 import { HeroDetailComponent } from './hero-detail/hero-detail.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 @NgModule({
+  // 组件
   declarations: [DashboardComponent, HeroDetailComponent],
+  // 依赖注入的服务
   providers: [HeroService],
+  // 系统需要的服务
   imports: [
     CommonModule,
     FormsModule,

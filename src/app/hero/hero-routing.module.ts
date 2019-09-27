@@ -4,7 +4,6 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { HeroDetailComponent } from './hero-detail/hero-detail.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'heros', pathMatch: 'full' },
   { path: 'heros', component: DashboardComponent },
   { path: 'hero/:id', component: HeroDetailComponent },
 ];

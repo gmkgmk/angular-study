@@ -1,0 +1,11 @@
+<button nz-button [nzType]="'primary'" (click)="showModal()">
+  <span>新增</span>
+</button>
+<nz-modal
+  [(nzVisible)]="isVisible"
+  nzTitle="新增"
+  (nzOnCancel)="handleCancel()"
+  (nzOnOk)="handleOk()"
+>
+  <input nz-input placeholder="请输入todoList内容" [(ngModel)]="value" />
+</nz-modal>

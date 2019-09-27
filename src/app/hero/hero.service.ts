@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { tap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
+// Injectable表示 标记该服务为可注入对象
 @Injectable()
 export class HeroService {
   private heroesUrl = 'api/heroList'; // URL to web api
