@@ -22,7 +22,6 @@ registerLocaleData(zh);
     // 根模块依赖
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule,
     FormsModule,
     // 子模块
     OrderModule,

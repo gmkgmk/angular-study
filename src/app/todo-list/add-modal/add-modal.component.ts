@@ -1,5 +1,6 @@
 import { TodoListService } from './../../service/todo-list/todo-list.service';
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
+import { NzMessageService } from 'ng-zorro-antd/message';
 
 @Component({
   selector: 'app-add-modal',
@@ -9,17 +10,26 @@ import { Component } from '@angular/core';
 export class AddModalComponent {
   isVisible = false;
   value: string;
+  @Output() fetchData = new EventEmitter<boolean>();
 
-  constructor(private todoListService: TodoListService) {}
+  constructor(
+    private todoListService: TodoListService,
+    private message: NzMessageService
+  ) {}
   showModal(): void {
     this.isVisible = true;
   }
 
   handleOk(): void {
-    console.log(this.value);
-    console.log('Button ok clicked!');
+    if (!this.value) {
+      this.message.error('请填写内容');
+      return;
+    }
+
     this.todoListService.addTodoList(this.value).subscribe(() => {
-      console.log(1);
+      this.fetchData.emit();
+      this.value = '';
+      this.message.success('添加成功!');
     });
     this.isVisible = false;
   }

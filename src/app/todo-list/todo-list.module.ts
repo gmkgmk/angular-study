@@ -14,11 +14,18 @@ import {
 import { ListComponent } from './list/list.component';
 import { AddModalComponent } from './add-modal/add-modal.component';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 const icons: IconDefinition[] = [MenuFoldOutline, TeamOutline, UserOutline];
 @NgModule({
   declarations: [TodoListComponent, ListComponent, AddModalComponent],
   providers: [TodoListService, { provide: NZ_ICONS, useValue: icons }],
-  imports: [CommonModule, TodolistRoutingModule, NgZorroAntdModule, FormsModule]
+  imports: [
+    CommonModule,
+    TodolistRoutingModule,
+    NgZorroAntdModule,
+    FormsModule,
+    HttpClientModule
+  ]
 })
 export class TodoListModule {}

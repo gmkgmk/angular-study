@@ -1,25 +1,38 @@
 <div>
-  <app-add-modal> </app-add-modal>
-  <nz-table #basicTable [nzData]="listOfData">
-    <thead>
-      <tr>
-        <th>姓名</th>
-        <th>Age</th>
-        <th>Address</th>
-        <th>Action</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let data of basicTable.data">
-        <td>{{ data.name }}</td>
-        <td>{{ data.age }}</td>
-        <td>{{ data.address }}</td>
-        <td>
-          <a>Action 一 {{ data.name }}</a>
-          <nz-divider nzType="vertical"></nz-divider>
-          <a>Delete</a>
-        </td>
-      </tr>
-    </tbody>
-  </nz-table>
+  <!-- 方法一:讲方法传给子组件,子组建调用  类似:vue emit -->
+  <app-add-modal (fetchData)="fetchData($event)"> </app-add-modal>
+  <!-- 方法二:通过本地变量,父组件调用,只又模版中有权限 -->
+  <!-- <app-add-modal #childModal> </app-add-modal> -->
+  <!-- 通过viewChild -->
+  <!-- <app-add-modal> </app-add-modal> -->
+  <nz-spin nzTip="Loading..." [nzSpinning]="loading">
+    <nz-table #basicTable [nzData]="listOfData">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>内容</th>
+          <th>状态</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of basicTable.data">
+          <td>{{ data.id }}</td>
+          <td>{{ data.content }}</td>
+          <td>{{ statusMap[data.status] }}</td>
+          <td>
+            <a>操作</a>
+            <nz-divider nzType="vertical"></nz-divider>
+            <a
+              nz-popconfirm
+              nzPopconfirmTitle="确定删除这条记录吗?"
+              nzPopconfirmPlacement="top"
+              (nzOnConfirm)="remove(data.id)"
+              >删除</a
+            >
+          </td>
+        </tr>
+      </tbody>
+    </nz-table>
+  </nz-spin>
 </div>
